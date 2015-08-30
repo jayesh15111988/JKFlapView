@@ -91,11 +91,11 @@
 
 	if (!self.flapOpened) {
 		fromVal = 0;
-		toVal = 110 * (M_PI / 180.0);
+		toVal = degreesToRadians(110);
 		toColorValue = [UIColor redColor].CGColor;
 		fromColorValue = [UIColor blackColor].CGColor;
 	} else {
-		fromVal = 110 * (M_PI / 180.0);
+		fromVal = degreesToRadians(110);
 		toVal = 0;
 		toColorValue = [UIColor blackColor].CGColor;
 		fromColorValue = [UIColor redColor].CGColor;
@@ -119,6 +119,10 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 	NSLog (@"Stopped");
+}
+
+static inline CGFloat degreesToRadians(CGFloat degrees) {
+    return degrees*(M_PI/180.0);
 }
 
 @end
