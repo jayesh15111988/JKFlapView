@@ -23,16 +23,12 @@
 	[super viewDidLoad];
 
 	self.flapOpeningMode = FlapOpeningModeTop;
-	UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-	UIVisualEffectView *viewWithBlurredBackground = [[UIVisualEffectView alloc] initWithEffect:effect];
-	UIVisualEffectView *viewInducingVibrancy = [[UIVisualEffectView alloc] initWithEffect:effect];
-	viewInducingVibrancy.frame = CGRectMake (0, 0, 128, 128);
-	[viewWithBlurredBackground.contentView addSubview:viewInducingVibrancy];
-	UILabel *vibrantLabel = [UILabel new];
-	vibrantLabel.text = @"fs df dsf dsf ds fds f";
-	vibrantLabel.frame = CGRectMake (0, 0, 128, 44);
-	vibrantLabel.textAlignment = NSTextAlignmentCenter;
-	[viewInducingVibrancy addSubview:vibrantLabel];
+	CATextLayer *vibrantLabel = [CATextLayer layer];
+	vibrantLabel.string = @"fs df dsf dsf ds fds fas das d asd ";
+	vibrantLabel.frame = CGRectMake (0, 32, 128, 64);
+	vibrantLabel.wrapped = YES;
+	vibrantLabel.alignmentMode = kCAAlignmentCenter;
+	[vibrantLabel setFontSize:[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0].pointSize];
 	self.flapOpened = NO;
 	UIView *parentView = [UIView new];
 	parentView.frame = CGRectMake (0, 0, 128, 128);
@@ -42,10 +38,12 @@
 
 	self.doorLayer = [CALayer layer];
 	self.doorLayer.frame = CGRectMake (0, 0, 128, 128);
-	self.flapOpeningMode = FlapOpeningModeright;
+	self.doorLayer.backgroundColor = [UIColor clearColor].CGColor;
+	self.doorLayer.contents = (__bridge id)[UIImage imageNamed:@"blur.jpg"].CGImage;
+	self.doorLayer.opacity = 0.9;
 
 	[self setupPositionAndAnchorPoint];
-	[self.doorLayer addSublayer:viewInducingVibrancy.layer];
+	[self.doorLayer addSublayer:vibrantLabel];
 	[parentView.layer addSublayer:self.doorLayer];
 	[self.view addSubview:parentView];
 	CATransform3D perspective = CATransform3DIdentity;
@@ -84,20 +82,27 @@
 - (void)animateDoorLayer {
 
 	CABasicAnimation *colorChangeAnimation = [CABasicAnimation animation];
-	colorChangeAnimation.toValue = (__bridge id)[UIColor yellowColor].CGColor;
 	colorChangeAnimation.keyPath = @"backgroundColor";
 
 	CGFloat fromVal;
 	CGFloat toVal;
+	CGColorRef toColorValue;
+	CGColorRef fromColorValue;
 
 	if (!self.flapOpened) {
 		fromVal = 0;
 		toVal = 110 * (M_PI / 180.0);
+		toColorValue = [UIColor redColor].CGColor;
+		fromColorValue = [UIColor blackColor].CGColor;
 	} else {
 		fromVal = 110 * (M_PI / 180.0);
 		toVal = 0;
+		toColorValue = [UIColor blackColor].CGColor;
+		fromColorValue = [UIColor redColor].CGColor;
 	}
 
+	colorChangeAnimation.toValue = (__bridge id)toColorValue;
+	colorChangeAnimation.fromValue = (__bridge id)fromColorValue;
 	CABasicAnimation *chase = [CAKeyframeAnimation animationWithKeyPath:self.animatingPropertyKeyPath
 								   function:ElasticEaseOut
 								  fromValue:fromVal
@@ -105,9 +110,9 @@
 	self.flapOpened = !self.flapOpened;
 	CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
 	animationGroup.animations = @[ chase ];
-	animationGroup.duration = 2.0;
+	animationGroup.duration = 0.75;
 	animationGroup.removedOnCompletion = NO;
-	animationGroup.delegate = self;
+	// animationGroup.delegate = self;
 	animationGroup.fillMode = kCAFillModeBoth;
 	[self.doorLayer addAnimation:animationGroup forKey:@"translateAnimation"];
 }
