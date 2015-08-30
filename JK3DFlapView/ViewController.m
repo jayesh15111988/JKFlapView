@@ -28,7 +28,7 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	_flippingViewDimensions = CGSizeMake (128.0, 128.0);
 	self.flapOpeningAngle = 120.0;
 	_animationDuration = 0.75f;
-
+	self.blurredImageEffectValue = BlurredImageEffectNone;
 	self.flapOpeningModeValue = JKFlapOpeningMode3D;
 
 	self.flapOpening3DModeValue = JKFlapOpeningMode3DTop;
@@ -37,32 +37,44 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	self.flapOpening2DDirectionValue = JKFlapOpening2DDirectionAnticlockwise;
 
 	self.overlayBackgroundImage = [UIImage imageNamed:@"blur.jpg"];
-	self.flapOverlayViewAlpha = 0.6;
+	self.flapOverlayViewAlpha = 0.7;
 	_overlayLabelTextValue = @"fs df dsf dsf ds fds fas das d asd \nas das d\na das d ";
 
-	CATextLayer* vibrantLabel = [CATextLayer layer];
-	vibrantLabel.string = _overlayLabelTextValue;
-	vibrantLabel.frame = CGRectMake (0, 0, _flippingViewDimensions.width - 20, _flippingViewDimensions.height - 20);
-	vibrantLabel.wrapped = YES;
-	vibrantLabel.alignmentMode = kCAAlignmentCenter;
-	[vibrantLabel setFontSize:[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0].pointSize];
+	CATextLayer* flippingViewOverlayLabel = [CATextLayer layer];
+	flippingViewOverlayLabel.string = _overlayLabelTextValue;
+	flippingViewOverlayLabel.frame =
+	    CGRectMake (0, 0, _flippingViewDimensions.width - 20, _flippingViewDimensions.height - 20);
+	flippingViewOverlayLabel.wrapped = YES;
+	flippingViewOverlayLabel.foregroundColor = [UIColor blackColor].CGColor;
+	flippingViewOverlayLabel.alignmentMode = kCAAlignmentCenter;
+	UIFont* fontToApply = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
+	[flippingViewOverlayLabel setFontSize:fontToApply.pointSize];
+	flippingViewOverlayLabel.font = (__bridge CFTypeRef)(fontToApply.fontName);
 	self.flapOpened = NO;
 	self.parentView = [UIView new];
 	self.parentView.frame = CGRectMake (0, 0, _flippingViewDimensions.width, _flippingViewDimensions.height);
-	self.parentView.center = CGPointMake (150, 150);
-
-	self.parentView.layer.contents = (__bridge id)[UIImage imageNamed:@"sp.jpg"].CGImage;
+	self.parentView.layer.backgroundColor = [UIColor greenColor].CGColor;
 
 	self.flippingLayer = [CALayer layer];
 	self.flippingLayer.frame = CGRectMake (0, 0, _flippingViewDimensions.width, _flippingViewDimensions.height);
 	self.flippingLayer.backgroundColor = [UIColor clearColor].CGColor;
-	vibrantLabel.position = self.flippingLayer.position;
-
-	self.flippingLayer.contents =
-	    (__bridge id)[_overlayBackgroundImage imageByApplyingAlpha:_flapOverlayViewAlpha].CGImage;
+	flippingViewOverlayLabel.position = self.flippingLayer.position;
+	if (self.blurredImageEffectValue != BlurredImageEffectNone) {
+		self.flippingLayer.contents =
+		    (__bridge id)[[self backgroundImageFromBlurredEffectValue:self.blurredImageEffectValue]
+			imageByApplyingAlpha:_flapOverlayViewAlpha]
+			.CGImage;
+	} else {
+		if (self.overlayBackgroundImage) {
+			self.flippingLayer.contents =
+			    (__bridge id)[_overlayBackgroundImage imageByApplyingAlpha:_flapOverlayViewAlpha].CGImage;
+		} else {
+			self.flippingLayer.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+		}
+	}
 
 	[self setupPositionAndAnchorPoint];
-	[self.flippingLayer addSublayer:vibrantLabel];
+	[self.flippingLayer addSublayer:flippingViewOverlayLabel];
 	[self.parentView.layer addSublayer:self.flippingLayer];
 	[self.view addSubview:self.parentView];
 	CATransform3D perspective = CATransform3DIdentity;
@@ -72,6 +84,21 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	UITapGestureRecognizer* tapRecognizer =
 	    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector (animateFlippingLayer)];
 	[self.parentView addGestureRecognizer:tapRecognizer];
+}
+
+- (UIImage*)backgroundImageFromBlurredEffectValue:(BlurredImageEffect)blurredImageEffectValue {
+	NSString* blurredImageName = @"";
+	if (blurredImageEffectValue == BlurredImageEffectSpotlight) {
+		blurredImageName = @"blur-spotlight";
+	} else if (blurredImageEffectValue == BlurredImageEffectBlack) {
+		blurredImageName = @"blur-black";
+	} else if (blurredImageEffectValue == BlurredImageEffectColorful) {
+		blurredImageName = @"blur-colorful";
+	} else if (blurredImageEffectValue == BlurredImageEffectBlue) {
+		blurredImageName = @"blur-blue";
+	}
+	UIImage* im = [UIImage imageNamed:blurredImageName];
+	return im;
 }
 
 - (void)setupPositionAndAnchorPoint {

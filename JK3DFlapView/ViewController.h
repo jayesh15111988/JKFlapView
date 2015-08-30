@@ -23,6 +23,7 @@
 @property (nonatomic, assign) JKFlapOpening2DDirection flapOpening2DDirectionValue;
 @property (nonatomic, assign) JKFlapOpening2DPosition flapOpening2DPositionValue;
 @property (nonatomic, assign) JKFlapOpening3DMode flapOpening3DModeValue;
+@property (nonatomic, assign) BlurredImageEffect blurredImageEffectValue;
 
 @property (nonatomic, assign, readonly) BOOL flapOpened;
 
