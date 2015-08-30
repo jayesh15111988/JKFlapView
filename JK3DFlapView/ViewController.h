@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, FlapOpeningMode) {
+    FlapOpeningModeTop,
+    FlapOpeningModeLeft,
+    FlapOpeningModeBottom,
+    FlapOpeningModeright
+};
+
+
 @interface ViewController : UIViewController
 
+@property (nonatomic, assign) FlapOpeningMode flapOpeningMode;
 
 @end
 
