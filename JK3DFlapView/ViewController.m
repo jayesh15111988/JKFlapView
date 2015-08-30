@@ -91,11 +91,11 @@
 
 	if (!self.flapOpened) {
 		fromVal = 0;
-		toVal = degreesToRadians(110);
+		toVal = degreesToRadians (110);
 		toColorValue = [UIColor redColor].CGColor;
 		fromColorValue = [UIColor blackColor].CGColor;
 	} else {
-		fromVal = degreesToRadians(110);
+		fromVal = degreesToRadians (110);
 		toVal = 0;
 		toColorValue = [UIColor blackColor].CGColor;
 		fromColorValue = [UIColor redColor].CGColor;
@@ -111,18 +111,16 @@
 	CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
 	animationGroup.animations = @[ chase ];
 	animationGroup.duration = 0.75;
-	animationGroup.removedOnCompletion = NO;
-	// animationGroup.delegate = self;
+	animationGroup.delegate = self;
 	animationGroup.fillMode = kCAFillModeBoth;
-	[self.doorLayer addAnimation:animationGroup forKey:@"translateAnimation"];
+	[self.doorLayer addAnimation:animationGroup forKey:@"rotationAnimation"];
+	self.doorLayer.transform = CATransform3DMakeRotation (toVal, 1, 0, 0);
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 	NSLog (@"Stopped");
 }
 
-static inline CGFloat degreesToRadians(CGFloat degrees) {
-    return degrees*(M_PI/180.0);
-}
+static inline CGFloat degreesToRadians (CGFloat degrees) { return degrees * (M_PI / 180.0); }
 
 @end
