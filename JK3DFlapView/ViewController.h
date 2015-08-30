@@ -7,34 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JK3DFlapViewEnumsCollection.h"
-
-@protocol AnimationCompleteProtocol <NSObject>
-
-@optional
-- (void)flipAnimationEnded;
-- (void)flipAnimationBegan;
-
-@end
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, assign) JKFlapOpeningMode flapOpeningModeValue;
-@property (nonatomic, assign) JKFlapOpening2DDirection flapOpening2DDirectionValue;
-@property (nonatomic, assign) JKFlapOpening2DPosition flapOpening2DPositionValue;
-@property (nonatomic, assign) JKFlapOpening3DMode flapOpening3DModeValue;
-@property (nonatomic, assign) BlurredImageEffect blurredImageEffectValue;
-
-@property (nonatomic, assign, readonly) BOOL flapOpened;
-
-@property (nonatomic, strong) UIView* parentView;
-@property (nonatomic, strong) UIImage* overlayBackgroundImage;
-@property (nonatomic, assign) CGSize flippingViewDimensions;
-@property (nonatomic, assign) CGFloat flapOpeningAngle;
-@property (nonatomic, assign) CGFloat flapOverlayViewAlpha;
-@property (nonatomic, assign) CGFloat animationDuration;
-@property (nonatomic, strong) NSString* overlayLabelTextValue;
-
-@property (nonatomic, weak) id<AnimationCompleteProtocol> delegate;
+//@property (nonatomic, assign) JKFlapOpeningMode flapOpeningModeValue;
+//@property (nonatomic, assign) JKFlapOpening2DDirection flapOpening2DDirectionValue;
+//@property (nonatomic, assign) JKFlapOpening2DPosition flapOpening2DPositionValue;
+//@property (nonatomic, assign) JKFlapOpening3DMode flapOpening3DModeValue;
+//@property (nonatomic, assign) JKBlurredImageEffect blurredImageEffectValue;
+//
+//@property (nonatomic, assign, readonly) BOOL flapOpened;
+//
+//@property (nonatomic, strong) UIView* parentView;
+//@property (nonatomic, strong) UIImage* overlayBackgroundImage;
+//@property (nonatomic, assign) CGSize flippingViewDimensions;
+//@property (nonatomic, assign) CGFloat flapOpeningAngle;
+//@property (nonatomic, assign) CGFloat flapOverlayViewAlpha;
+//@property (nonatomic, assign) CGFloat animationDuration;
+//@property (nonatomic, strong) NSString* overlayLabelTextValue;
+//
+//@property (nonatomic, weak) id<AnimationCompleteProtocol> delegate;
 
 @end

@@ -30,12 +30,12 @@ typedef NS_ENUM (NSUInteger, JKFlapOpening2DPosition) {
 	JKFlapOpening2DPositionTopRight
 };
 
-typedef NS_ENUM (NSUInteger, BlurredImageEffect) {
-	BlurredImageEffectNone,
-	BlurredImageEffectSpotlight,
-	BlurredImageEffectBlack,
-	BlurredImageEffectColorful,
-	BlurredImageEffectBlue
+typedef NS_ENUM (NSUInteger, JKBlurredImageEffect) {
+	JKBlurredImageEffectNone,
+	JKBlurredImageEffectSpotlight,
+	JKBlurredImageEffectBlack,
+	JKBlurredImageEffectColorful,
+	JKBlurredImageEffectBlue
 };
 
 #endif

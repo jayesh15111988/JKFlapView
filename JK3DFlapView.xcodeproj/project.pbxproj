@@ -14,12 +14,12 @@
 		386F43801B923EA500E6375C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 386F437F1B923EA500E6375C /* Images.xcassets */; };
 		386F43831B923EA500E6375C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386F43811B923EA500E6375C /* LaunchScreen.xib */; };
 		386F438F1B923EA500E6375C /* JK3DFlapViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F438E1B923EA500E6375C /* JK3DFlapViewTests.m */; };
-		386F439A1B92526200E6375C /* sp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 386F43991B92526200E6375C /* sp.jpg */; };
 		38D7DDA51B9398C7002441E2 /* UIImage+AlphaChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */; };
 		38D7DDB31B93B46E002441E2 /* blur-spotlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDAF1B93B46E002441E2 /* blur-spotlight.png */; };
 		38D7DDB41B93B46E002441E2 /* blur-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDB01B93B46E002441E2 /* blur-black.png */; };
 		38D7DDB51B93B46E002441E2 /* blur-colorful.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDB11B93B46E002441E2 /* blur-colorful.png */; };
 		38D7DDB61B93B46E002441E2 /* blur-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDB21B93B46E002441E2 /* blur-blue.png */; };
+		38D7DDBA1B93BC6B002441E2 /* JK3DFlippingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D7DDB91B93BC6B002441E2 /* JK3DFlippingView.m */; };
 		A7C50D15DFBC77DCFB74CF6E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B6517D770684B0710A35DB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,6 @@
 		386F43881B923EA500E6375C /* JK3DFlapViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JK3DFlapViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		386F438D1B923EA500E6375C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386F438E1B923EA500E6375C /* JK3DFlapViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JK3DFlapViewTests.m; sourceTree = "<group>"; };
-		386F43991B92526200E6375C /* sp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp.jpg; sourceTree = "<group>"; };
 		38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaChange.h"; sourceTree = "<group>"; };
 		38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaChange.m"; sourceTree = "<group>"; };
 		38D7DDA61B93AAE0002441E2 /* JK3DFlapViewEnumsCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JK3DFlapViewEnumsCollection.h; sourceTree = "<group>"; };
@@ -57,6 +56,8 @@
 		38D7DDB01B93B46E002441E2 /* blur-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blur-black.png"; sourceTree = "<group>"; };
 		38D7DDB11B93B46E002441E2 /* blur-colorful.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blur-colorful.png"; sourceTree = "<group>"; };
 		38D7DDB21B93B46E002441E2 /* blur-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blur-blue.png"; sourceTree = "<group>"; };
+		38D7DDB81B93BC6B002441E2 /* JK3DFlippingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JK3DFlippingView.h; sourceTree = "<group>"; };
+		38D7DDB91B93BC6B002441E2 /* JK3DFlippingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JK3DFlippingView.m; sourceTree = "<group>"; };
 		8954BF20BA072162555074B9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				38D7DDA21B9398B3002441E2 /* Categories */,
+				38D7DDB71B93BAB4002441E2 /* images */,
 				386F43981B923F8800E6375C /* Classes */,
 				386F43761B923EA500E6375C /* AppDelegate.h */,
 				386F43771B923EA500E6375C /* AppDelegate.m */,
@@ -163,11 +165,10 @@
 		386F43981B923F8800E6375C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				386F43991B92526200E6375C /* sp.jpg */,
-				38D7DDAF1B93B46E002441E2 /* blur-spotlight.png */,
-				38D7DDB01B93B46E002441E2 /* blur-black.png */,
-				38D7DDB11B93B46E002441E2 /* blur-colorful.png */,
-				38D7DDB21B93B46E002441E2 /* blur-blue.png */,
+				38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */,
+				38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */,
+				38D7DDB81B93BC6B002441E2 /* JK3DFlippingView.h */,
+				38D7DDB91B93BC6B002441E2 /* JK3DFlippingView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -175,10 +176,19 @@
 		38D7DDA21B9398B3002441E2 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */,
-				38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		38D7DDB71B93BAB4002441E2 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				38D7DDAF1B93B46E002441E2 /* blur-spotlight.png */,
+				38D7DDB01B93B46E002441E2 /* blur-black.png */,
+				38D7DDB11B93B46E002441E2 /* blur-colorful.png */,
+				38D7DDB21B93B46E002441E2 /* blur-blue.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +273,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				386F439A1B92526200E6375C /* sp.jpg in Resources */,
 				38D7DDB51B93B46E002441E2 /* blur-colorful.png in Resources */,
 				38D7DDB61B93B46E002441E2 /* blur-blue.png in Resources */,
 				386F437E1B923EA500E6375C /* Main.storyboard in Resources */,
@@ -325,6 +334,7 @@
 				386F437B1B923EA500E6375C /* ViewController.m in Sources */,
 				386F43781B923EA500E6375C /* AppDelegate.m in Sources */,
 				386F43751B923EA500E6375C /* main.m in Sources */,
+				38D7DDBA1B93BC6B002441E2 /* JK3DFlippingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
