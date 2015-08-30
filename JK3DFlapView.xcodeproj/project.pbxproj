@@ -17,6 +17,7 @@
 		386F439A1B92526200E6375C /* sp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 386F43991B92526200E6375C /* sp.jpg */; };
 		38D7DD9F1B92A640002441E2 /* blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DD9E1B92A640002441E2 /* blur.jpg */; };
 		38D7DDA11B92AA54002441E2 /* blur2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDA01B92AA54002441E2 /* blur2.jpg */; };
+		38D7DDA51B9398C7002441E2 /* UIImage+AlphaChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */; };
 		A7C50D15DFBC77DCFB74CF6E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B6517D770684B0710A35DB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 		386F43991B92526200E6375C /* sp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp.jpg; sourceTree = "<group>"; };
 		38D7DD9E1B92A640002441E2 /* blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blur.jpg; sourceTree = "<group>"; };
 		38D7DDA01B92AA54002441E2 /* blur2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blur2.jpg; sourceTree = "<group>"; };
+		38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaChange.h"; sourceTree = "<group>"; };
+		38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaChange.m"; sourceTree = "<group>"; };
 		8954BF20BA072162555074B9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +114,7 @@
 		386F43711B923EA500E6375C /* JK3DFlapView */ = {
 			isa = PBXGroup;
 			children = (
+				38D7DDA21B9398B3002441E2 /* Categories */,
 				38D7DD9E1B92A640002441E2 /* blur.jpg */,
 				38D7DDA01B92AA54002441E2 /* blur2.jpg */,
 				386F43981B923F8800E6375C /* Classes */,
@@ -158,6 +162,15 @@
 				386F43991B92526200E6375C /* sp.jpg */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		38D7DDA21B9398B3002441E2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */,
+				38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38D7DDA51B9398C7002441E2 /* UIImage+AlphaChange.m in Sources */,
 				386F437B1B923EA500E6375C /* ViewController.m in Sources */,
 				386F43781B923EA500E6375C /* AppDelegate.m in Sources */,
 				386F43751B923EA500E6375C /* main.m in Sources */,
