@@ -52,6 +52,7 @@
 		38D7DDA01B92AA54002441E2 /* blur2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blur2.jpg; sourceTree = "<group>"; };
 		38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaChange.h"; sourceTree = "<group>"; };
 		38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaChange.m"; sourceTree = "<group>"; };
+		38D7DDA61B93AAE0002441E2 /* JK3DFlapViewEnumsCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JK3DFlapViewEnumsCollection.h; sourceTree = "<group>"; };
 		8954BF20BA072162555074B9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +127,7 @@
 				386F437F1B923EA500E6375C /* Images.xcassets */,
 				386F43811B923EA500E6375C /* LaunchScreen.xib */,
 				386F43721B923EA500E6375C /* Supporting Files */,
+				38D7DDA61B93AAE0002441E2 /* JK3DFlapViewEnumsCollection.h */,
 			);
 			path = JK3DFlapView;
 			sourceTree = "<group>";
