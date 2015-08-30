@@ -15,6 +15,7 @@
 		386F43831B923EA500E6375C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386F43811B923EA500E6375C /* LaunchScreen.xib */; };
 		386F438F1B923EA500E6375C /* JK3DFlapViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F438E1B923EA500E6375C /* JK3DFlapViewTests.m */; };
 		386F439A1B92526200E6375C /* sp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 386F43991B92526200E6375C /* sp.jpg */; };
+		A7C50D15DFBC77DCFB74CF6E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B6517D770684B0710A35DB /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08B6517D770684B0710A35DB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		24000BF56369B3EF79CEBBFF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		386F436F1B923EA500E6375C /* JK3DFlapView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JK3DFlapView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		386F43731B923EA500E6375C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386F43741B923EA500E6375C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		386F438D1B923EA500E6375C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386F438E1B923EA500E6375C /* JK3DFlapViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JK3DFlapViewTests.m; sourceTree = "<group>"; };
 		386F43991B92526200E6375C /* sp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp.jpg; sourceTree = "<group>"; };
+		8954BF20BA072162555074B9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7C50D15DFBC77DCFB74CF6E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +67,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1242DA0903DD0DD1CD863760 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08B6517D770684B0710A35DB /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1495B3D2EB03D852C7D5044A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8954BF20BA072162555074B9 /* Pods.debug.xcconfig */,
+				24000BF56369B3EF79CEBBFF /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		386F43661B923EA500E6375C = {
 			isa = PBXGroup;
 			children = (
 				386F43711B923EA500E6375C /* JK3DFlapView */,
 				386F438B1B923EA500E6375C /* JK3DFlapViewTests */,
 				386F43701B923EA500E6375C /* Products */,
+				1495B3D2EB03D852C7D5044A /* Pods */,
+				1242DA0903DD0DD1CD863760 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 386F43921B923EA500E6375C /* Build configuration list for PBXNativeTarget "JK3DFlapView" */;
 			buildPhases = (
+				F78B5FBED3EB976B90CEDC0B /* Check Pods Manifest.lock */,
 				386F436B1B923EA500E6375C /* Sources */,
 				386F436C1B923EA500E6375C /* Frameworks */,
 				386F436D1B923EA500E6375C /* Resources */,
+				C58B7C1FCC806E2F1A052131 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -225,6 +251,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C58B7C1FCC806E2F1A052131 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F78B5FBED3EB976B90CEDC0B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		386F436B1B923EA500E6375C /* Sources */ = {
@@ -359,6 +418,7 @@
 		};
 		386F43931B923EA500E6375C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8954BF20BA072162555074B9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JK3DFlapView/Info.plist;
@@ -369,6 +429,7 @@
 		};
 		386F43941B923EA500E6375C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24000BF56369B3EF79CEBBFF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JK3DFlapView/Info.plist;
@@ -430,6 +491,7 @@
 				386F43941B923EA500E6375C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		386F43951B923EA500E6375C /* Build configuration list for PBXNativeTarget "JK3DFlapViewTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +500,7 @@
 				386F43971B923EA500E6375C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
