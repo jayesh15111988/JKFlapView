@@ -120,7 +120,6 @@
 		386F43711B923EA500E6375C /* JK3DFlapView */ = {
 			isa = PBXGroup;
 			children = (
-				38D7DDA21B9398B3002441E2 /* Categories */,
 				38D7DDB71B93BAB4002441E2 /* images */,
 				386F43981B923F8800E6375C /* Classes */,
 				386F43761B923EA500E6375C /* AppDelegate.h */,
@@ -171,13 +170,6 @@
 				38D7DDB91B93BC6B002441E2 /* JKFlippingView.m */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		38D7DDA21B9398B3002441E2 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Categories;
 			sourceTree = "<group>";
 		};
 		38D7DDB71B93BAB4002441E2 /* images */ = {

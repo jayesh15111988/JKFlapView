@@ -13,7 +13,7 @@
 
 static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 
-@interface ViewController ()
+@interface ViewController () <AnimationCompleteDelegate>
 
 @property (nonatomic, strong) CALayer* flippingLayer;
 @property (nonatomic, assign) BOOL flapOpened;
@@ -25,12 +25,20 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	JKFlippingView* flippingView = [[JKFlippingView alloc] init3DFlapWithOpeningMode:JKFlapOpeningMode3DRight
-									     andFlipviewSize:CGSizeMake (200, 200)];
+	JKFlippingView* flippingView = [[JKFlippingView alloc] init3DFlapWithOpeningMode:JKFlapOpeningMode3DBottom
+									 andFlipviewSize:CGSizeMake (200, 200)];
 	flippingView.overlayLabelTextValue = @"asdasdasd\nasdasd\nasdasd";
+	flippingView.blurredImageEffectValue = JKBlurredImageEffectColorful;
+	flippingView.delegate = self;
 	UIView* flipView = [flippingView outputFlipView];
 	flipView.backgroundColor = [UIColor redColor];
 	[self.view addSubview:flipView];
+}
+
+- (void)flipAnimationBegan {
+}
+
+- (void)flipAnimationEnded {
 }
 
 @end

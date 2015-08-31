@@ -11,7 +11,7 @@
 #import <AHEasing/CAKeyframeAnimation+AHEasing.h>
 #import "JK3DFlapViewEnumsCollection.h"
 
-@protocol AnimationCompleteProtocol <NSObject>
+@protocol AnimationCompleteDelegate <NSObject>
 
 @optional
 - (void)flipAnimationEnded;
@@ -39,6 +39,6 @@
 @property (nonatomic, strong) NSString* overlayLabelTextValue;
 @property (nonatomic, assign) AHEasingFunction flipAnimationEasingFunction;
 
-@property (nonatomic, weak) id<AnimationCompleteProtocol> delegate;
+@property (nonatomic, weak) id<AnimationCompleteDelegate> delegate;
 
 @end

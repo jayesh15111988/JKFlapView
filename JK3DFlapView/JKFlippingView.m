@@ -55,7 +55,7 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 }
 
 - (void)setupDefaultParametersValues {
-	_flapOpeningAngle = 120.0;
+	_flapOpeningAngle = -110.0;
 	_animationDuration = 0.75f;
 	_blurredImageEffectValue = JKBlurredImageEffectNone;
 	_overlayLabelTextValue = @"";
@@ -202,6 +202,11 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 			transformToApply = CATransform3DMakeRotation (toVal, 1, 0, 0);
 		} else {
 			transformToApply = CATransform3DMakeRotation (toVal, 0, 1, 0);
+			// Sorry for this hack, but I am not sure why animation sucks big time while rotating around
+			// Y-Axis.
+			if (toVal != 0) {
+				toVal = M_PI - toVal;
+			}
 		}
 	}
 
@@ -220,14 +225,14 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 }
 
 - (void)animationDidStop:(CAAnimation*)anim finished:(BOOL)flag {
-	if ([self.delegate conformsToProtocol:@protocol (AnimationCompleteProtocol)] &&
+	if ([self.delegate conformsToProtocol:@protocol (AnimationCompleteDelegate)] &&
 	    [self.delegate respondsToSelector:@selector (flipAnimationEnded)]) {
 		[self.delegate flipAnimationEnded];
 	}
 }
 
 - (void)animationDidStart:(CAAnimation*)anim {
-	if ([self.delegate conformsToProtocol:@protocol (AnimationCompleteProtocol)] &&
+	if ([self.delegate conformsToProtocol:@protocol (AnimationCompleteDelegate)] &&
 	    [self.delegate respondsToSelector:@selector (flipAnimationBegan)]) {
 		[self.delegate flipAnimationBegan];
 	}
