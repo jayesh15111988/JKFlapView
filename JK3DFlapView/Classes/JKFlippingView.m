@@ -56,7 +56,7 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 
 - (void)setupDefaultParametersValues {
 	_flapOpeningAngle = -110.0;
-	_animationDuration = 0.75f;
+	_animationDuration = 0.5f;
 	_blurredImageEffectValue = JKBlurredImageEffectNone;
 	_overlayLabelTextValue = @"";
 	_flapOverlayViewAlpha = 0.7;
