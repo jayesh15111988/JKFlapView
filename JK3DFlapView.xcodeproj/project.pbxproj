@@ -130,7 +130,6 @@
 				386F437F1B923EA500E6375C /* Images.xcassets */,
 				386F43811B923EA500E6375C /* LaunchScreen.xib */,
 				386F43721B923EA500E6375C /* Supporting Files */,
-				38D7DDA61B93AAE0002441E2 /* JK3DFlapViewEnumsCollection.h */,
 			);
 			path = JK3DFlapView;
 			sourceTree = "<group>";
@@ -164,6 +163,7 @@
 		386F43981B923F8800E6375C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				38D7DDA61B93AAE0002441E2 /* JK3DFlapViewEnumsCollection.h */,
 				38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */,
 				38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */,
 				38D7DDB81B93BC6B002441E2 /* JKFlippingView.h */,
