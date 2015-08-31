@@ -19,7 +19,7 @@
 		38D7DDB41B93B46E002441E2 /* blur-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDB01B93B46E002441E2 /* blur-black.png */; };
 		38D7DDB51B93B46E002441E2 /* blur-colorful.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDB11B93B46E002441E2 /* blur-colorful.png */; };
 		38D7DDB61B93B46E002441E2 /* blur-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDB21B93B46E002441E2 /* blur-blue.png */; };
-		38D7DDBA1B93BC6B002441E2 /* JK3DFlippingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D7DDB91B93BC6B002441E2 /* JK3DFlippingView.m */; };
+		38D7DDBA1B93BC6B002441E2 /* JKFlippingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D7DDB91B93BC6B002441E2 /* JKFlippingView.m */; };
 		A7C50D15DFBC77DCFB74CF6E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B6517D770684B0710A35DB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +56,8 @@
 		38D7DDB01B93B46E002441E2 /* blur-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blur-black.png"; sourceTree = "<group>"; };
 		38D7DDB11B93B46E002441E2 /* blur-colorful.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blur-colorful.png"; sourceTree = "<group>"; };
 		38D7DDB21B93B46E002441E2 /* blur-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blur-blue.png"; sourceTree = "<group>"; };
-		38D7DDB81B93BC6B002441E2 /* JK3DFlippingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JK3DFlippingView.h; sourceTree = "<group>"; };
-		38D7DDB91B93BC6B002441E2 /* JK3DFlippingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JK3DFlippingView.m; sourceTree = "<group>"; };
+		38D7DDB81B93BC6B002441E2 /* JKFlippingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFlippingView.h; sourceTree = "<group>"; };
+		38D7DDB91B93BC6B002441E2 /* JKFlippingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKFlippingView.m; sourceTree = "<group>"; };
 		8954BF20BA072162555074B9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,8 +167,8 @@
 			children = (
 				38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */,
 				38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */,
-				38D7DDB81B93BC6B002441E2 /* JK3DFlippingView.h */,
-				38D7DDB91B93BC6B002441E2 /* JK3DFlippingView.m */,
+				38D7DDB81B93BC6B002441E2 /* JKFlippingView.h */,
+				38D7DDB91B93BC6B002441E2 /* JKFlippingView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 				386F437B1B923EA500E6375C /* ViewController.m in Sources */,
 				386F43781B923EA500E6375C /* AppDelegate.m in Sources */,
 				386F43751B923EA500E6375C /* main.m in Sources */,
-				38D7DDBA1B93BC6B002441E2 /* JK3DFlippingView.m in Sources */,
+				38D7DDBA1B93BC6B002441E2 /* JKFlippingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

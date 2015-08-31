@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AHEasing/CAKeyframeAnimation+AHEasing.h>
 #import "JK3DFlapViewEnumsCollection.h"
 
 @protocol AnimationCompleteProtocol <NSObject>
@@ -18,10 +19,13 @@
 
 @end
 
-@interface JK3DFlippingView : NSObject
+@interface JKFlippingView : NSObject
 
-- (instancetype)init3DFlapWithOpeningMode:(JKFlapOpening3DMode)flapOpening3DMode andFlipviewSize:(CGSize)flippingViewSize;
-- (instancetype)init2DFlapWithPosition:(JKFlapOpening2DPosition)flapOpeningPosition and2DModeFlapOpeningDirection:(JKFlapOpening2DDirection)flapOpeningDirection andFlipviewSize:(CGSize)flippingViewSize;
+- (instancetype)init3DFlapWithOpeningMode:(JKFlapOpening3DMode)flapOpening3DMode
+			  andFlipviewSize:(CGSize)flippingViewSize;
+- (instancetype)init2DFlapWithPosition:(JKFlapOpening2DPosition)flapOpeningPosition
+	 and2DModeFlapOpeningDirection:(JKFlapOpening2DDirection)flapOpeningDirection
+		       andFlipviewSize:(CGSize)flippingViewSize;
 - (UIView*)outputFlipView;
 
 @property (nonatomic, assign) JKBlurredImageEffect blurredImageEffectValue;
@@ -33,6 +37,7 @@
 @property (nonatomic, assign) CGFloat flapOverlayViewAlpha;
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, strong) NSString* overlayLabelTextValue;
+@property (nonatomic, assign) AHEasingFunction flipAnimationEasingFunction;
 
 @property (nonatomic, weak) id<AnimationCompleteProtocol> delegate;
 
