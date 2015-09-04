@@ -22,19 +22,21 @@
 @interface JKFlippingView : UIView
 
 - (instancetype)init3DFlapWithOpeningMode:(JKFlapOpening3DMode)flapOpening3DMode
-                          andFlipviewSize:(CGSize)flippingViewSize andOverlayLabelTextValue:(NSString*)overlayLabelTextValue;
+                          andFlipviewSize:(CGSize)flippingViewSize;
 - (instancetype)init2DFlapWithPosition:(JKFlapOpening2DPosition)flapOpeningPosition
 	 and2DModeFlapOpeningDirection:(JKFlapOpening2DDirection)flapOpeningDirection
-		       andFlipviewSize:(CGSize)flippingViewSize andOverlayLabelTextValue:(NSString*)overlayLabelTextValue;
+                       andFlipviewSize:(CGSize)flippingViewSize;
 
+- (void)updateSize;
 
 @property (nonatomic, assign, readonly) BOOL flapOpened;
 
-@property (nonatomic, assign) JKBlurredImageEffect blurredImageEffectValue;
 @property (nonatomic, strong) UIImage* overlayBackgroundImage;
+@property (nonatomic, assign) JKBlurredImageEffect blurredImageEffectValue;
 @property (nonatomic, assign) CGFloat flapOpeningAngle;
 @property (nonatomic, assign) CGFloat flapOverlayViewAlpha;
 @property (nonatomic, assign) CGFloat animationDuration;
+@property (nonatomic, strong) NSString* overlayLabelTextValue;
 @property (nonatomic, assign) AHEasingFunction flipAnimationEasingFunction;
 
 @property (nonatomic, weak) id<AnimationCompleteDelegate> delegate;

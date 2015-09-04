@@ -7,6 +7,7 @@
 //
 
 #import <BlocksKit/BlocksKit+UIKit.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "UIImage+AlphaChange.h"
 #import "JKFlippingView.h"
 
@@ -19,7 +20,8 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 @property (nonatomic, strong) NSString* animatingPropertyKeyPath;
 @property (nonatomic, assign) CGSize flippingViewDimensions;
 @property (nonatomic, strong) UITapGestureRecognizer* tapRecognizer;
-@property (nonatomic, strong) NSString* overlayLabelTextValue;
+@property (nonatomic, strong) CATextLayer* flippingViewOverlayLabel;
+@property (nonatomic, strong) UIFont* overlayLabelFont;
 
 @property (nonatomic, assign) JKFlapOpeningMode flapOpeningModeValue;
 @property (nonatomic, assign) JKFlapOpening2DDirection flapOpening2DDirectionValue;
@@ -32,11 +34,9 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 
 - (instancetype)init2DFlapWithPosition:(JKFlapOpening2DPosition)flapOpeningPosition
 	 and2DModeFlapOpeningDirection:(JKFlapOpening2DDirection)flapOpeningDirection
-		       andFlipviewSize:(CGSize)flippingViewSize
-	      andOverlayLabelTextValue:(NSString*)overlayLabelTextValue {
+		       andFlipviewSize:(CGSize)flippingViewSize {
 	if (self = [super init]) {
 		_flapOpeningModeValue = JKFlapOpeningMode2D;
-		_overlayLabelTextValue = overlayLabelTextValue;
 		_flapOpening2DPositionValue = flapOpeningPosition;
 		_flapOpening2DDirectionValue = flapOpeningDirection;
 		_flippingViewDimensions = flippingViewSize;
@@ -47,11 +47,9 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 }
 
 - (instancetype)init3DFlapWithOpeningMode:(JKFlapOpening3DMode)flapOpening3DMode
-			  andFlipviewSize:(CGSize)flippingViewSize
-		 andOverlayLabelTextValue:(NSString*)overlayLabelTextValue {
+			  andFlipviewSize:(CGSize)flippingViewSize {
 	if (self = [super init]) {
 		_flapOpeningModeValue = JKFlapOpeningMode3D;
-		_overlayLabelTextValue = overlayLabelTextValue;
 		_flapOpening3DModeValue = flapOpening3DMode;
 		_flippingViewDimensions = flippingViewSize;
 		[self setupDefaultParametersValues];
@@ -71,6 +69,7 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	_flippingLayer = [CALayer layer];
 	_flippingLayer.frame = CGRectMake (0, 0, self.frame.size.width, self.frame.size.height);
 	_flippingLayer.backgroundColor = [UIColor clearColor].CGColor;
+
 	CATransform3D perspective = CATransform3DIdentity;
 	perspective.m34 = -1.0 / 500.0;
 	_flippingLayer.sublayerTransform = perspective;
@@ -78,27 +77,31 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 }
 
 - (UIView*)setupFlipView {
+	_flippingViewOverlayLabel = [CATextLayer layer];
+	_flippingViewOverlayLabel.frame = CGRectMake (0, 0, self.frame.size.width - 20, self.frame.size.height - 20);
+	_flippingViewOverlayLabel.wrapped = YES;
+	_flippingViewOverlayLabel.contentsScale = [UIScreen mainScreen].scale;
+	_flippingViewOverlayLabel.magnificationFilter = kCAFilterNearest;
+	_flippingViewOverlayLabel.alignmentMode = kCAAlignmentCenter;
+	_overlayLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
+	[_flippingViewOverlayLabel setFontSize:_overlayLabelFont.pointSize];
+	_flippingViewOverlayLabel.font = (__bridge CFTypeRef)(_overlayLabelFont.fontName);
 
-	CATextLayer* flippingViewOverlayLabel = [CATextLayer layer];
-	flippingViewOverlayLabel.frame = CGRectMake (0, 0, self.frame.size.width - 20, self.frame.size.height - 20);
-	flippingViewOverlayLabel.wrapped = YES;
-	flippingViewOverlayLabel.contentsScale = [UIScreen mainScreen].scale;
-	flippingViewOverlayLabel.magnificationFilter = kCAFilterNearest;
-	flippingViewOverlayLabel.alignmentMode = kCAAlignmentCenter;
-	UIFont* fontToApply = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
-	[flippingViewOverlayLabel setFontSize:fontToApply.pointSize];
-	flippingViewOverlayLabel.font = (__bridge CFTypeRef)(fontToApply.fontName);
-
-	flippingViewOverlayLabel.string = _overlayLabelTextValue;
-	flippingViewOverlayLabel.position = self.flippingLayer.position;
+	_flippingViewOverlayLabel.string = _overlayLabelTextValue;
+	_flippingViewOverlayLabel.position = self.flippingLayer.position;
 	[self setupPositionAndAnchorPoint];
-	[self.flippingLayer addSublayer:flippingViewOverlayLabel];
+	[self.flippingLayer addSublayer:_flippingViewOverlayLabel];
 	[self.layer addSublayer:self.flippingLayer];
 
 	[self bk_whenTapped:^{
 	  [self animateFlippingLayer];
 	}];
 	return self;
+}
+
+- (void)setOverlayLabelTextValue:(NSString*)overlayLabelTextValue {
+	_flippingViewOverlayLabel.string = overlayLabelTextValue;
+	_overlayLabelTextValue = overlayLabelTextValue;
 }
 
 - (UIImage*)backgroundImageFromBlurredEffectValue:(JKBlurredImageEffect)blurredImageEffectValue {
@@ -112,8 +115,8 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	} else if (blurredImageEffectValue == JKBlurredImageEffectBlue) {
 		blurredImageName = @"blur-blue";
 	}
-	UIImage* im = [UIImage imageNamed:blurredImageName];
-	return im;
+	UIImage* overlayImage = [UIImage imageNamed:blurredImageName];
+	return overlayImage;
 }
 
 - (void)setupPositionAndAnchorPoint {
@@ -161,19 +164,36 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 }
 
 - (void)setBlurredImageEffectValue:(JKBlurredImageEffect)blurredImageEffectValue {
-    if (blurredImageEffectValue != JKBlurredImageEffectNone) {
-        self.flippingLayer.contents =
-        (__bridge id)[[self backgroundImageFromBlurredEffectValue:blurredImageEffectValue]
-                      imageByApplyingAlpha:_flapOverlayViewAlpha]
-        .CGImage;
-    } else {
-        if (self.overlayBackgroundImage) {
-            self.flippingLayer.contents =
-            (__bridge id)[_overlayBackgroundImage imageByApplyingAlpha:_flapOverlayViewAlpha].CGImage;
-        } else {
-            self.flippingLayer.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
-        }
-    }
+	if (blurredImageEffectValue != JKBlurredImageEffectNone) {
+		self.flippingLayer.contents =
+		    (__bridge id)[[self backgroundImageFromBlurredEffectValue:blurredImageEffectValue]
+			imageByApplyingAlpha:_flapOverlayViewAlpha]
+			.CGImage;
+	} else {
+		if (self.overlayBackgroundImage) {
+			self.flippingLayer.contents =
+			    (__bridge id)[_overlayBackgroundImage imageByApplyingAlpha:_flapOverlayViewAlpha].CGImage;
+		} else {
+			self.flippingLayer.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+		}
+	}
+}
+
+- (void)updateSize {
+	_flippingLayer.frame = CGRectMake (0, 0, self.frame.size.width, self.frame.size.height);
+	CGFloat labelHeight = [self heightForText:_overlayLabelTextValue andFontApplied:_overlayLabelFont];
+	_flippingViewOverlayLabel.frame =
+	    CGRectMake (10, (self.frame.size.height - labelHeight) / 2.0, self.frame.size.width - 20, labelHeight);
+}
+
+- (CGFloat)heightForText:(NSString*)text andFontApplied:(UIFont*)fontApplied {
+	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake (0, 0, self.frame.size.width - 20, CGFLOAT_MAX)];
+	label.numberOfLines = 0;
+	label.lineBreakMode = NSLineBreakByWordWrapping;
+	label.font = fontApplied;
+	label.text = text;
+	[label sizeToFit];
+	return label.frame.size.height + 10;
 }
 
 - (void)animateFlippingLayer {
