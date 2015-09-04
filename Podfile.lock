@@ -15,22 +15,13 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - ReactiveCocoa (2.5):
-    - ReactiveCocoa/UI (= 2.5)
-  - ReactiveCocoa/Core (2.5):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.5)
-  - ReactiveCocoa/UI (2.5):
-    - ReactiveCocoa/Core
 
 DEPENDENCIES:
   - AHEasing
   - BlocksKit (~> 2.2)
-  - ReactiveCocoa (~> 2.5)
 
 SPEC CHECKSUMS:
   AHEasing: 847f583bcd83a2bb850e38ccdb26d22e2593f34d
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
 
 COCOAPODS: 0.38.2

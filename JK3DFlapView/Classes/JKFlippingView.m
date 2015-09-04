@@ -7,7 +7,6 @@
 //
 
 #import <BlocksKit/BlocksKit+UIKit.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "UIImage+AlphaChange.h"
 #import "JKFlippingView.h"
 

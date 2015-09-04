@@ -5,5 +5,4 @@ xcodeproj 'JK3DFlapView'
 
 pod 'BlocksKit', '~> 2.2'
 pod 'AHEasing'
-pod 'ReactiveCocoa', '~> 2.5'
 
