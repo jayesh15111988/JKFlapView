@@ -106,13 +106,13 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 - (UIImage*)backgroundImageFromBlurredEffectValue:(JKBlurredImageEffect)blurredImageEffectValue {
 	NSString* blurredImageName = @"";
 	if (blurredImageEffectValue == JKBlurredImageEffectSpotlight) {
-		blurredImageName = @"blur-spotlight";
+		blurredImageName = @"JK3DFlap-blur-spotlight";
 	} else if (blurredImageEffectValue == JKBlurredImageEffectBlack) {
-		blurredImageName = @"blur-black";
+		blurredImageName = @"JK3DFlap-blur-black";
 	} else if (blurredImageEffectValue == JKBlurredImageEffectColorful) {
-		blurredImageName = @"blur-colorful";
+		blurredImageName = @"JK3DFlap-blur-colorful";
 	} else if (blurredImageEffectValue == JKBlurredImageEffectBlue) {
-		blurredImageName = @"blur-blue";
+		blurredImageName = @"JK3DFlap-blur-blue";
 	}
 	UIImage* overlayImage = [UIImage imageNamed:blurredImageName];
 	return overlayImage;
