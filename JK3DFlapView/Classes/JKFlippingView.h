@@ -37,6 +37,7 @@
 @property (nonatomic, assign) CGFloat flapOverlayViewAlpha;
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, strong) NSString* overlayLabelTextValue;
+@property (nonatomic, assign) BOOL playOpeningFlapSound;
 @property (nonatomic, assign) AHEasingFunction flipAnimationEasingFunction;
 
 @property (nonatomic, weak) id<AnimationCompleteDelegate> delegate;

@@ -37,6 +37,11 @@
 						and2DModeFlapOpeningDirection:JKFlapOpening2DDirectionAnticlockwise
 							      andFlipviewSize:CGSizeZero];
 
+	_flippingView3DDemo1.playOpeningFlapSound = YES;
+	_flippingView3DDemo2.playOpeningFlapSound = NO;
+	_flippingView2DDemo1.playOpeningFlapSound = YES;
+	_flippingView2DDemo2.playOpeningFlapSound = NO;
+
 	_flippingView3DDemo1.translatesAutoresizingMaskIntoConstraints = NO;
 	_flippingView3DDemo2.translatesAutoresizingMaskIntoConstraints = NO;
 	_flippingView2DDemo1.translatesAutoresizingMaskIntoConstraints = NO;

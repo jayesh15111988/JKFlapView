@@ -7,6 +7,7 @@
 //
 
 #import <BlocksKit/BlocksKit+UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "UIImage+AlphaChange.h"
 #import "JKFlippingView.h"
 
@@ -22,6 +23,7 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 @property (nonatomic, strong) CATextLayer* flippingViewOverlayLabel;
 @property (nonatomic, strong) UIFont* overlayLabelFont;
 
+@property (strong, nonatomic) AVAudioPlayer* soundPlayer;
 @property (nonatomic, assign) JKFlapOpeningMode flapOpeningModeValue;
 @property (nonatomic, assign) JKFlapOpening2DDirection flapOpening2DDirectionValue;
 @property (nonatomic, assign) JKFlapOpening2DPosition flapOpening2DPositionValue;
@@ -61,7 +63,8 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	_animationDuration = 0.5f;
 	_blurredImageEffectValue = JKBlurredImageEffectNone;
 	_flapOverlayViewAlpha = 0.7;
-
+    _playOpeningFlapSound = NO;
+    
 	_flapOpened = NO;
 	self.frame = CGRectMake (0, 0, _flippingViewDimensions.width, _flippingViewDimensions.height);
 
@@ -73,6 +76,12 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	perspective.m34 = -1.0 / 500.0;
 	_flippingLayer.sublayerTransform = perspective;
 	_flipAnimationEasingFunction = ElasticEaseOut;
+    NSURL* soundFileURL = [self fullURLForFileWithName:@"JKFlapViewOpen.wav"];
+    NSError* error = nil;
+    _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:&error];
+    if (!error) {
+        _soundPlayer.numberOfLoops = 0;
+    }
 }
 
 - (UIView*)setupFlipView {
@@ -202,6 +211,10 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	CGColorRef fromColorValue;
 	CATransform3D transformToApply;
 
+    if (_playOpeningFlapSound) {
+        [_soundPlayer play];
+    }
+    
 	if (!self.flapOpened) {
 		fromVal = 0;
 		toVal = degreesToRadians (_flapOpeningAngle);
@@ -259,6 +272,12 @@ static NSString* const RotationAnimationKey = @"viewRotationAnimation";
 	    [self.delegate respondsToSelector:@selector (flipAnimationBegan)]) {
 		[self.delegate flipAnimationBegan];
 	}
+}
+
+- (NSURL*)fullURLForFileWithName:(NSString*)fileName {
+	NSBundle* bundle = [NSBundle mainBundle];
+	NSString* bundleDirectory = (NSString*)[bundle bundlePath];
+	return [NSURL fileURLWithPath:[bundleDirectory stringByAppendingPathComponent:fileName]];
 }
 
 static inline CGFloat degreesToRadians (CGFloat degrees) {

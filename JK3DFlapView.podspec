@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author        = 'Jayesh Kawli'
   s.source        = {  :git => 'git@github.com:jayesh15111988/JKFlapView.git', :tag => "#{s.version}" }
   s.source_files  = 'JK3DFlapView/Classes/**/*'
-  s.resources     = 'JK3DFlapView/Images/*.png'
+  s.resources     = ['JK3DFlapView/Images/*.png','JK3DFlapView/Sound/*.wav']
   s.requires_arc  = true
   s.ios.deployment_target = '7.0'
   s.dependency 'BlocksKit', '~> 2.2'

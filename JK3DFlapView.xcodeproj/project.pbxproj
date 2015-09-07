@@ -14,6 +14,7 @@
 		386F43801B923EA500E6375C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 386F437F1B923EA500E6375C /* Images.xcassets */; };
 		386F43831B923EA500E6375C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386F43811B923EA500E6375C /* LaunchScreen.xib */; };
 		386F438F1B923EA500E6375C /* JK3DFlapViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F438E1B923EA500E6375C /* JK3DFlapViewTests.m */; };
+		389505B61B9D1C870052AB32 /* JKFlapViewOpen.wav in Resources */ = {isa = PBXBuildFile; fileRef = 389505B51B9D1C870052AB32 /* JKFlapViewOpen.wav */; };
 		38D7DDA51B9398C7002441E2 /* UIImage+AlphaChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */; };
 		38D7DDB31B93B46E002441E2 /* JK3DFlap-blur-spotlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDAF1B93B46E002441E2 /* JK3DFlap-blur-spotlight.png */; };
 		38D7DDB41B93B46E002441E2 /* JK3DFlap-blur-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7DDB01B93B46E002441E2 /* JK3DFlap-blur-black.png */; };
@@ -49,6 +50,7 @@
 		386F43881B923EA500E6375C /* JK3DFlapViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JK3DFlapViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		386F438D1B923EA500E6375C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386F438E1B923EA500E6375C /* JK3DFlapViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JK3DFlapViewTests.m; sourceTree = "<group>"; };
+		389505B51B9D1C870052AB32 /* JKFlapViewOpen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = JKFlapViewOpen.wav; sourceTree = "<group>"; };
 		38D7DDA31B9398C7002441E2 /* UIImage+AlphaChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaChange.h"; sourceTree = "<group>"; };
 		38D7DDA41B9398C7002441E2 /* UIImage+AlphaChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaChange.m"; sourceTree = "<group>"; };
 		38D7DDA61B93AAE0002441E2 /* JK3DFlapViewEnumsCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JK3DFlapViewEnumsCollection.h; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		386F43711B923EA500E6375C /* JK3DFlapView */ = {
 			isa = PBXGroup;
 			children = (
+				389505B41B9D1C7D0052AB32 /* Sound */,
 				38D7DDB71B93BAB4002441E2 /* Images */,
 				386F43981B923F8800E6375C /* Classes */,
 				386F43761B923EA500E6375C /* AppDelegate.h */,
@@ -170,6 +173,14 @@
 				38D7DDB91B93BC6B002441E2 /* JKFlippingView.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		389505B41B9D1C7D0052AB32 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				389505B51B9D1C870052AB32 /* JKFlapViewOpen.wav */,
+			);
+			name = Sound;
 			sourceTree = "<group>";
 		};
 		38D7DDB71B93BAB4002441E2 /* Images */ = {
@@ -268,6 +279,7 @@
 				38D7DDB51B93B46E002441E2 /* JK3DFlap-blur-colorful.png in Resources */,
 				38D7DDB61B93B46E002441E2 /* JK3DFlap-blur-blue.png in Resources */,
 				386F437E1B923EA500E6375C /* Main.storyboard in Resources */,
+				389505B61B9D1C870052AB32 /* JKFlapViewOpen.wav in Resources */,
 				38D7DDB41B93B46E002441E2 /* JK3DFlap-blur-black.png in Resources */,
 				38D7DDB31B93B46E002441E2 /* JK3DFlap-blur-spotlight.png in Resources */,
 				386F43831B923EA500E6375C /* LaunchScreen.xib in Resources */,
