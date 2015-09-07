@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name          = 'JKFlapView'
-  s.version       = '0.0.1'
+  s.name          = 'JK3DFlapView'
+  s.version       = '0.0.2'
   s.license       = 'MIT'
   s.summary       = 'An exciting 3D and 2D overlay flap view with various custom options'
   s.homepage      = 'https://github.com/jayesh15111988'
